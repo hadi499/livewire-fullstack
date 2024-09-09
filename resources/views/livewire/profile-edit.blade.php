@@ -19,8 +19,8 @@
                 </div>
                 <div class="mb-4">
                     <label for="birthday" class="block text-gray-700 text-sm font-bold mb-2">Your Birthday</label>
-                    <input type="date" wire:model.defer="birthday" id="birthday" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                    @error('date') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                    <input type="text" wire:model="birthday" id="datepicker" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" autocomplete="off">
+                    @error('birthday') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-4 ">
                     @if ($avatar)
@@ -68,3 +68,25 @@
 
     </x-modal-tes>
 </div>
+
+
+@script
+<script>
+    let picker = new Pikaday({
+        field: document.getElementById('datepicker'),
+        format: 'D MMM YYYY',
+        toString(date, format) {
+            // you should do formatting based on the passed format,
+            // but we will just return 'D/M/YYYY' for simplicity
+            const day = String(date.getDate()).padStart(2, 0);
+            const month = String(date.getMonth() + 1).padStart(2, 0);
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+        },
+        onSelect: function() {
+            // console.log(moment(this.getDate()).format('D MMM YYYY'));
+            $wire.set('birthday', moment(this.getDate()).format('D MMM YYYY'), false);
+        }
+    });
+</script>
+@endscript

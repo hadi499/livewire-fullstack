@@ -1,5 +1,5 @@
 <div class="max-w-md mx-auto mt-10">
-    <form wire:submit.prevent="login" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <form wire:submit.prevent="login" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 border">
         <h2 class="text-2xl font-bold mb-4">Login</h2>
 
         @if (session()->has('message'))

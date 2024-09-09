@@ -91,11 +91,12 @@
                 <a wire:navigate href="{{route('profile')}}" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-blue-50 disabled:text-gray-500">
                   Profile
                 </a>
-                <form action="{{route('logout')}}" method="POST" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-blue-50 disabled:text-gray-500">
+                <form action="{{ route('logout') }}" method="POST" class="block w-full">
                   @csrf
-                  <button type="submit" class="dropdown-item">Logout</button>
+                  <button type="submit" class="flex items-center gap-2 w-full first-of-type:rounded-t-md last-of-type:rounded-b-md px-4 py-2.5 text-left text-sm hover:bg-blue-50 disabled:text-gray-500">
+                    Logout
+                  </button>
                 </form>
-
 
 
               </div>
@@ -133,10 +134,12 @@
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-gray-500">
 
 
-        <a href="{{ route('home') }}" class="block hover:bg-blue-200 text-center px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('home') ? ' text-blue-800' : '' }}">Home</a>
-        <form action="{{route('logout')}}" method="POST" class="flex items-center gap-2 w-full hover:bg-blue-200 px-3 py-2 rounded-md text-base font-medium text-blue-800">
+        <a href="{{ route('home') }}" class="block hover:bg-blue-200 text-left px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('home') ? ' text-blue-800' : '' }}">Home</a>
+        <form action="{{ route('logout') }}" method="POST" class="block w-full">
           @csrf
-          <button type="submit" class="text-center w-full">Logout</button>
+          <button type="submit" class="w-full text-left hover:bg-blue-200 px-3 py-2 rounded-md text-base font-medium text-blue-800">
+            Logout
+          </button>
         </form>
 
         @endauth
