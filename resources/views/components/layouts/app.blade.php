@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html
+
+    lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+    x-data="{isDarkMode: localStorage.getItem('dark') === 'true'}"
+    x-init="$watch('isDarkMode', val =>localStorage.setItem('dark', val))"
+    x-bind:class="{'dark': isDarkMode}">
 
 <head>
     <meta charset="utf-8">
@@ -46,23 +51,23 @@
     </style>
 </head>
 
-<body ">
+<body class="dark:bg-slate-600 ">
     <x-navbar />
     <x-message-success />
 
 
 
-  
 
-        {{ $slot }}
 
-  
+    {{ $slot }}
 
 
 
 
 
-   
+
+
+
 
 </body>
 

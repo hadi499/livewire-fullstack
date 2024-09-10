@@ -4,16 +4,16 @@
     </div>
     <div class="mb-4">
 
-        @if ( $search)
+        @if ($search)
         <button class="mr-2 py-1 px-2 bg-blue-200 rounded-full font-semibold text-xs gray-500" wire:click="clearFilters()">X</button>
         @endif
         @if ($search)
         <span class="ml-2">
             {{ __('blog.containing') }} : <strong>{{ $search }}</strong>
         </span>
+        @endif
 
     </div>
-    @endif
     @if ($this->posts->isEmpty())
     <div class="text-center text-gray-700">
         <p>No post found.</p>
